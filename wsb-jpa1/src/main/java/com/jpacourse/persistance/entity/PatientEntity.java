@@ -30,12 +30,12 @@ public class PatientEntity {
 	@Column(nullable = false)
 	private LocalDate dateOfBirth;
 
-	// Dwustronna relacja z Address (od strony dziecka)
+	// Obustronna relacja do "Address" (od strony child)
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "address_id", nullable = false)
 	private AddressEntity address;
 
-	// Dwustronna relacja z Visit (od strony rodzica)
+	// Obustronna relacja do "Visit" (od strony parent)
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<VisitEntity> visits;
 
