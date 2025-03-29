@@ -20,11 +20,11 @@ public class AddressEntity {
 
 	private String postalCode;
 
-	// Dwustronna relacja z Doctor (od strony dziecka)
+	// relacja dwustronna do "Doctor" (ze strony child)
 	@OneToMany(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<DoctorEntity> doctors;
 
-	// Dwustronna relacja z Patient (od strony dziecka)
+	//  relacja dwustronna do "Patient" (ze strony child)
 	@OneToMany(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PatientEntity> patients;
 
