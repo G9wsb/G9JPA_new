@@ -20,7 +20,7 @@ public class MedicalTreatmentEntity {
 	@Enumerated(EnumType.STRING)
 	private TreatmentType type;
 
-	// Dwustronna relacja z Visit (od strony rodzica)
+	// Relacja obustronna do "Visit" (od strony parent)
 	@OneToMany(mappedBy = "treatment", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<VisitEntity> visits;
 
