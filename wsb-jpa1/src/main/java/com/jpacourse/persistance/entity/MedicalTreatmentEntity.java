@@ -2,8 +2,6 @@ package com.jpacourse.persistance.entity;
 
 import com.jpacourse.persistance.enums.TreatmentType;
 
-import java.util.List;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -20,10 +18,9 @@ public class MedicalTreatmentEntity {
 	@Enumerated(EnumType.STRING)
 	private TreatmentType type;
 
-	// Relacja obustronna do "Visit" (od strony parent)
-	@OneToMany(mappedBy = "treatment", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<VisitEntity> visits;
-
+	@ManyToOne
+	@JoinColumn(name = "visit_id", nullable = false)
+	private VisitEntity visit;
 
 	public Long getId() {
 		return id;
@@ -49,11 +46,11 @@ public class MedicalTreatmentEntity {
 		this.type = type;
 	}
 
-	public List<VisitEntity> getVisits() {
-		return visits;
+	public VisitEntity getVisit() {
+		return visit;
 	}
 
-	public void setVisits(List<VisitEntity> visits) {
-		this.visits = visits;
+	public void setVisit(VisitEntity visit) {
+		this.visit = visit;
 	}
 }
